@@ -17,7 +17,7 @@ const Menu = () => {
                         Home
                     </Button>
                     <Button colorScheme="teal" variant="ghost">
-                        Productos
+                        Burgers
                     </Button>
                     <Button colorScheme="teal" variant="ghost">
                         Login
