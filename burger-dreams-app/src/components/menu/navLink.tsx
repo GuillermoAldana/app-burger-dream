@@ -3,7 +3,7 @@ import {
   Link,
   useColorModeValue
 } from '@chakra-ui/react';
-import { ILink } from './../../interfaces/linkInterfaces'
+import { ILink } from '../../interfaces/linkInterfaces'
 const NavLink = (props: ILink) => {
   return(
       <Link

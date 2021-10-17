@@ -4,7 +4,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import NavLink from './navLink';
 import {ILink} from '../../interfaces/linkInterfaces';
 import NavMobile from './navMobile';
-
+import userLogo from '../../resources/images/programmer.png';
 const Nav = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,12 +44,10 @@ const Nav = () => {
                 variant={'link'}
                 cursor={'pointer'}
                 minW={0}>
-                <Avatar
-                  size={'sm'}
-                  src={
-                    'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                  }
-                />
+                  <Avatar
+                    size={'sm'}
+                    src={userLogo}
+                  />
               </MenuButton>
               <MenuList>
                 <MenuItem>Cerrar sesion</MenuItem>
