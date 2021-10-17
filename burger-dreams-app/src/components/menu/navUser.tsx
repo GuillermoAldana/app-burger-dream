@@ -2,7 +2,7 @@ import React from 'react';
 import userLogo from '../../resources/images/programmer.png';
 import { Avatar, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 
-const navUser: React.FC<any> = () => {
+const NavUser = () => {
     return (
         <Menu>
             <MenuButton
@@ -10,17 +10,19 @@ const navUser: React.FC<any> = () => {
                 rounded={'full'}
                 variant={'link'}
                 cursor={'pointer'}
-                minW={0}>
+                minW={0}
+                color={'gray'}>
+                
                 <Avatar
                     size={'sm'}
                     src={userLogo}
                 />
             </MenuButton>
-            <MenuList>
+            <MenuList color={'#37393a'}>
                 <MenuItem>Cerrar sesion</MenuItem>
             </MenuList>
         </Menu>
     );
 }
 
-export default navUser;
+export default NavUser;

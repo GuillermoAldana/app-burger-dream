@@ -1,15 +1,18 @@
 import { Flex, Image } from '@chakra-ui/react';
-import imageLogo from './../../resources/images/imageBurger.png'
+import imageLogo from './../../resources/images/BurgerPortada.jpg'
 import React from 'react';
 
 const PresentLayout = () =>
 {
     return(
         <React.Fragment>
-            <Flex align='center' mx='2'>
+            <Flex mx='2' justify='center'>
             <Image src={imageLogo}
-                alt="Segun Adebayo" 
-                boxSize="450px"
+                borderWidth="1px"
+                borderRadius="lg"
+                alt="Portada"
+                width='100%' 
+                
                 objectFit="cover"/>
             </Flex>
         </React.Fragment>

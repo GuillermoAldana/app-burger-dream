@@ -12,7 +12,7 @@ const NavLink = (props: ILink) => {
       rounded={'md'}
       _hover={{
         textDecoration: 'none',
-        bg: useColorModeValue('gray.200', 'gray.700'),
+        bg: useColorModeValue('#404648', '#404648'),
       }}
       href={props.Enlace}>
       {props.Title}
