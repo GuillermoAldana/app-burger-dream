@@ -1,14 +1,15 @@
 import React from 'react';
-import { Box, Flex, Avatar, HStack, IconButton, Heading, Button, Menu, MenuButton, MenuList, MenuItem, useDisclosure, useColorModeValue } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { Box, Flex, HStack, IconButton, Heading, useDisclosure, useColorModeValue } from '@chakra-ui/react';
 import NavLink from './navLink';
-import {ILink} from '../../interfaces/linkInterfaces';
+import NavUser from './navUser';
 import NavMobile from './navMobile';
-import userLogo from '../../resources/images/programmer.png';
-const Nav = () => {
+import { ILink } from '../../interfaces/linkInterfaces';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
+const Nav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const Links: Array<ILink> = [{ Title: 'Home', Enlace: '/' }, { Title: 'Productos', Enlace: '/Productos' }, { Title: 'Login', Enlace: '/Login' }];
+
   return (
     <React.Fragment>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -29,33 +30,18 @@ const Nav = () => {
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
               {Links.map((item: ILink) => (
-                <NavLink 
-                key={item.Title} 
-                Title={item.Title} 
-                Enlace={item.Enlace} />
+                <NavLink
+                  key={item.Title}
+                  Title={item.Title}
+                  Enlace={item.Enlace} />
               ))}
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={'full'}
-                variant={'link'}
-                cursor={'pointer'}
-                minW={0}>
-                  <Avatar
-                    size={'sm'}
-                    src={userLogo}
-                  />
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Cerrar sesion</MenuItem>
-              </MenuList>
-            </Menu>
+            <NavUser />
           </Flex>
         </Flex>
-        {isOpen && ( <NavMobile Links={Links}/> ) }
+          {isOpen && (<NavMobile Links={Links} />)}
       </Box>
     </React.Fragment>
   )
