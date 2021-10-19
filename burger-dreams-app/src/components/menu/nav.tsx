@@ -8,7 +8,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 const Nav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const Links: Array<ILink> = [{ Title: 'Home', Enlace: '/' }, { Title: 'Productos', Enlace: '/Productos' }, { Title: 'Login', Enlace: '/Login' }];
+  const Links: Array<ILink> = [{ Title: 'Home', Enlace: '/' }, { Title: 'Burger', Enlace: '/BurgerList' }, { Title: 'Login', Enlace: '/Login' }];
 
   return (
     <React.Fragment>
