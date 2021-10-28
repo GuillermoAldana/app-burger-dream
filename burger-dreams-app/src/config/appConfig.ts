@@ -1,0 +1,1 @@
+export const APISERVICES = 'https://6164c34709a29d0017c88e73.mockapi.io/api/BurgerDream/';

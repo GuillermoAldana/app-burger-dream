@@ -1,8 +1,8 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Menu from './components/menu/nav';
-import Home from './pages/home';
-import Burgers from './pages/burgers';
-import Login from './pages/login';
+import Home from './pages/homePage';
+import Burgers from './pages/burgersPage';
+import Login from './pages/loginPage';
 import NotFoundPage from "./pages/notFoundPage";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Theme from './resources/theme/index';

@@ -1,16 +1,14 @@
 import { SimpleGrid, Box } from '@chakra-ui/layout';
 import React from 'react';
-import PresentLayout from '../components/home/presentLayout';
-import AboutLayout from '../components/home/aboutLayout';
-const Home = () => {
+import Home from '../components/home/index';
+const HomePage = () => {
     return(
         <Box p={4} display={{ base: 'flex', md: 'flex' }}>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-                <PresentLayout />
-                <AboutLayout />
+                <Home />
             </SimpleGrid>
         </Box>
     )
 };
 
-export default Home;
+export default HomePage;
