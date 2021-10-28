@@ -14,7 +14,7 @@ BurgerAxios.interceptors.request.use(
     }
 )
 BurgerAxios.interceptors.response.use(
-    function() {
+    function(response) {
         return response.data;
     }, function(error) {
         return Promise.reject(error);

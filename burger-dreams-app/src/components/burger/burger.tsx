@@ -1,11 +1,18 @@
-import { SimpleGrid } from "@chakra-ui/react";
 import React from "react";
-import BurgerBox from './burgerBox';
+import {useEffect} from "react";
+import BurgerBox from "./burgerBox";
+import { SimpleGrid } from "@chakra-ui/react";
+import * as BurgerServices from "../../services/burgerServices";
 interface BurgerProps {
     
 }
  
 const Burger: React.FC<BurgerProps> = () => {
+    useEffect(()=>{
+        BurgerServices.getBurgers().then(response => {
+           console.log(response);
+          });;
+    },[])
     return ( 
         <React.Fragment>
         <SimpleGrid columns={{ base: 1, md: 5 }} spacing={3}>
