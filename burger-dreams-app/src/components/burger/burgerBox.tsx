@@ -1,4 +1,4 @@
-import { Box, Image, Flex, Center, Avatar, Stack, Heading, Text, Button } from "@chakra-ui/react";
+import { Box, Image, Center, Heading, Text, Stack } from "@chakra-ui/react";
 import React from "react";
 import BurgerOption from "./burgerOptions";
 
@@ -13,16 +13,14 @@ interface BurgerListProps {
 const BurgerBox: React.FC<BurgerListProps> = ({ ImageBox, TitleBox, TipoBurgerBox, PrecioBox, RecomentacionBox }: BurgerListProps) => {
     return (
         <React.Fragment>
-            <Center py={6}>
+            <Center align="right" justify="right">
                 <Box
-                    maxW={'470px'}
-                    w={'375px'}
                     bg={'white'}
                     boxShadow={'2xl'}
                     rounded={'md'}
                     overflow={'hidden'}>
                     <Image
-                        h={'160px'}
+                        h={'170px'}
                         w={'full'}
                         src={ImageBox}
                         objectFit={'cover'}

@@ -1,6 +1,5 @@
 import React from "react";
-import {useState} from 'react';
-import { Button, HStack, Input, useNumberInput } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import BurgerAdd from './burgerAdd';
 interface BurgerOptionProps {
 
