@@ -1,18 +1,19 @@
 import React from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAllItemsBurger } from '../../redux/actions/burgerActions';
 import BurgerBox from "./burgerBox";
 import { SimpleGrid, Center, Flex } from "@chakra-ui/react";
-import * as BurgerServices from "../../services/burgerServices";
 import BurgerCart from "./burgerCart";
 interface BurgerProps {
 
 }
 
 const Burger: React.FC<BurgerProps> = () => {
+    const dispatch = useDispatch();
     useEffect(() => {
-        BurgerServices.getBurgers().then(response => {
-            console.log(response);
-        });;
+        dispatch(getAllItemsBurger());
+        
     }, [])
     return (
         <React.Fragment>
@@ -25,31 +26,6 @@ const Burger: React.FC<BurgerProps> = () => {
                 <BurgerBox
                     ImageBox={'https://bigseventravel.com/wp-content/uploads/2019/05/Screenshot-2019-05-07-at-20.15.55.png'} TitleBox={'Title'} TipoBurgerBox={'Veggie'}
                     PrecioBox={10} RecomentacionBox={4} />
-                <BurgerBox
-                    ImageBox={'https://bigseventravel.com/wp-content/uploads/2019/05/Screenshot-2019-05-07-at-20.15.55.png'} TitleBox={'Title'} TipoBurgerBox={'Veggie'}
-                    PrecioBox={10} RecomentacionBox={4} />
-                <BurgerBox
-                    ImageBox={'https://bigseventravel.com/wp-content/uploads/2019/05/Screenshot-2019-05-07-at-20.15.55.png'} TitleBox={'Title'} TipoBurgerBox={'Veggie'}
-                    PrecioBox={10} RecomentacionBox={4} />
-                <BurgerBox
-                    ImageBox={'https://bigseventravel.com/wp-content/uploads/2019/05/Screenshot-2019-05-07-at-20.15.55.png'} TitleBox={'Title'} TipoBurgerBox={'Veggie'}
-                    PrecioBox={10} RecomentacionBox={4} />
-                 <BurgerBox
-                    ImageBox={'https://bigseventravel.com/wp-content/uploads/2019/05/Screenshot-2019-05-07-at-20.15.55.png'} TitleBox={'Title'} TipoBurgerBox={'Veggie'}
-                    PrecioBox={10} RecomentacionBox={4} />
-                     <BurgerBox
-                    ImageBox={'https://bigseventravel.com/wp-content/uploads/2019/05/Screenshot-2019-05-07-at-20.15.55.png'} TitleBox={'Title'} TipoBurgerBox={'Veggie'}
-                    PrecioBox={10} RecomentacionBox={4} />
-                     <BurgerBox
-                    ImageBox={'https://bigseventravel.com/wp-content/uploads/2019/05/Screenshot-2019-05-07-at-20.15.55.png'} TitleBox={'Title'} TipoBurgerBox={'Veggie'}
-                    PrecioBox={10} RecomentacionBox={4} />
-                     <BurgerBox
-                    ImageBox={'https://bigseventravel.com/wp-content/uploads/2019/05/Screenshot-2019-05-07-at-20.15.55.png'} TitleBox={'Title'} TipoBurgerBox={'Veggie'}
-                    PrecioBox={10} RecomentacionBox={4} />
-                     <BurgerBox
-                    ImageBox={'https://bigseventravel.com/wp-content/uploads/2019/05/Screenshot-2019-05-07-at-20.15.55.png'} TitleBox={'Title'} TipoBurgerBox={'Veggie'}
-                    PrecioBox={10} RecomentacionBox={4} />
-                 
 
             </SimpleGrid>
         </React.Fragment>
