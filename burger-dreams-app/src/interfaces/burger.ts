@@ -5,4 +5,5 @@ export interface IBurger{
     Image: string;
     TipoBurger: string;
     id: number;
+    createdAt?: number,
 }
