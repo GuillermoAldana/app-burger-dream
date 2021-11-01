@@ -1,5 +1,5 @@
 import { GET_ITEMS_BURGER } from "../../constants/types";
-import { IBurger } from "../../interfaces/burger";
+import { IBurger } from "../../interfaces/burgerInterface";
 import * as BurgerServices from '../../services/burgerServices';
 
 export const getAllItemsBurger = () => async (dispatch: any) => {
@@ -7,7 +7,7 @@ export const getAllItemsBurger = () => async (dispatch: any) => {
         
             const data: Array<IBurger> = [];
             const getData: any = await BurgerServices.getBurgers();
-
+            console.log(getData);
             getData.map((element: any) => data.push({
                 Title: 'Burger ' + element.Title,
                 Recomendacion: element.Recomendacion,

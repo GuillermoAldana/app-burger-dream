@@ -1,4 +1,4 @@
-export interface IBurger{
+export interface IBurger {
     Title: string;
     Recomendacion: number;
     Price: number;

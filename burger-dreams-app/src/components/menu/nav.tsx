@@ -3,7 +3,7 @@ import { Box, Flex,Text, HStack, IconButton, Heading, useDisclosure, useColorMod
 import NavLink from './navLink';
 import NavUser from './navUser';
 import NavMobile from './navMobile';
-import { ILink } from '../../interfaces/linkInterfaces';
+import { ILink } from '../../interfaces/linkInterface';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 const Nav = () => {

@@ -27,7 +27,7 @@ const AboutLayout :React.FC<any> = () =>
             </Stack>
             <Box p={4} >
                 <SimpleGrid columns={{ base: 3, md: 3 }} spacing={10} >
-                    <AboutIcon title={'Productos/Calidad'} image={Verduras}/>
+                    <AboutIcon title={'Productos / Calidad'} image={Verduras}/>
                     <AboutIcon title={'Burger Caseras'} image={Burger}/>
                     <AboutIcon title={'Hecho con Amor'} image={Fritas}/> 
                 </SimpleGrid>

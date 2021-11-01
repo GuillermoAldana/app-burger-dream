@@ -1,6 +1,7 @@
 import { Box, Image, Center, Heading, Text, Stack } from "@chakra-ui/react";
 import React from "react";
 import BurgerOption from "./burgerOptions";
+import { IBurger } from '../../interfaces/burgerInterface';
 
 interface BurgerListProps {
     ImageBox: string;
@@ -8,9 +9,12 @@ interface BurgerListProps {
     TipoBurgerBox: string;
     PrecioBox: number;
     RecomentacionBox: number;
+    Burger: IBurger;
+    
 }
 
-const BurgerBox: React.FC<BurgerListProps> = ({ ImageBox, TitleBox, TipoBurgerBox, PrecioBox, RecomentacionBox }: BurgerListProps) => {
+const BurgerBox: React.FC<BurgerListProps> = ({ ImageBox, TitleBox, TipoBurgerBox, PrecioBox, RecomentacionBox, Burger }: BurgerListProps) => {
+
     return (
         <React.Fragment>
             <Center align="right" justify="right">
@@ -46,7 +50,7 @@ const BurgerBox: React.FC<BurgerListProps> = ({ ImageBox, TitleBox, TipoBurgerBo
                                 </Text>
                             </Stack>
                         </Stack>
-                        <BurgerOption />
+                        <BurgerOption Burger={Burger}/>
                     </Box>
                 </Box>
             </Center>

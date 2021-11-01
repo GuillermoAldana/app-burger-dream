@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Stack} from '@chakra-ui/react';
-import {ILink} from '../../interfaces/linkInterfaces';
+import {ILink} from '../../interfaces/linkInterface';
 import NavLink from './navLink';
 const NavMobile: React.FC<any> = ({Links}) => {
     return ( 
