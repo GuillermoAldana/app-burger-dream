@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from '@chakra-ui/react';
 import BurgerAdd from './burgerAdd';
 import { IBurger } from '../../interfaces/burgerInterface';
+import { ICart } from '../../interfaces/cartInterface';
+import Burger from './index';
 interface BurgerOptionProps {
     Burger: IBurger
 }
@@ -9,6 +11,8 @@ interface BurgerOptionProps {
 
 const BurgerOption: React.FC<BurgerOptionProps> = ({Burger}:BurgerOptionProps) => {
     const [unit, setUnit] = React.useState<number>(1);
+    const [cart, setCart] = React.useState<ICart[]>([]);
+
     const addUnit = (): void => {
         (unit < 5) && setUnit(unit + 1);
     }
@@ -16,8 +20,13 @@ const BurgerOption: React.FC<BurgerOptionProps> = ({Burger}:BurgerOptionProps) =
         (unit > 1) && setUnit(unit - 1);
     }
     const addCart = () => {
-        //TODO: Add actions function
-        console.log('Unidad'+ unit + 'Burger'+ Burger.id);
+        let cartBurger: ICart[] = [];
+        cartBurger.push({Unit: unit, Burger: Burger})
+        setCart({
+            ...cart, // Obtenemos elementos con un spread operator
+           /*  cart: cartBurger, */
+        });
+        console.log(cart)
     }
     return (
         <React.Fragment>
