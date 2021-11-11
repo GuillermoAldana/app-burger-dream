@@ -1,4 +1,4 @@
-import {GET_ITEMS_BURGER} from '../../constants/types';
+import {GET_ITEMS_BURGER} from '../../constants/const';
 
 const initialState = {
     error: null,

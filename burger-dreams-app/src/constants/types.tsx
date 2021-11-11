@@ -1,1 +1,0 @@
-export const GET_ITEMS_BURGER = 'GET_ITEMS_BURGER';

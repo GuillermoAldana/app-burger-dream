@@ -1,9 +1,12 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from '@chakra-ui/react';
 import BurgerAdd from './burgerAdd';
 import { IBurger } from '../../interfaces/burgerInterface';
 import { ICart } from '../../interfaces/cartInterface';
-import Burger from './index';
+import {addCartItem} from '../../redux/actions/cartActions';
+
+
 interface BurgerOptionProps {
     Burger: IBurger
 }
@@ -11,8 +14,9 @@ interface BurgerOptionProps {
 
 const BurgerOption: React.FC<BurgerOptionProps> = ({Burger}:BurgerOptionProps) => {
     const [unit, setUnit] = React.useState<number>(1);
-    const [cart, setCart] = React.useState<ICart[]>([]);
-
+    const { listCart } = useSelector((state: any) => state.cartReducer);
+    
+    const dispatch = useDispatch();
     const addUnit = (): void => {
         (unit < 5) && setUnit(unit + 1);
     }
@@ -20,16 +24,14 @@ const BurgerOption: React.FC<BurgerOptionProps> = ({Burger}:BurgerOptionProps) =
         (unit > 1) && setUnit(unit - 1);
     }
     const addCart = () => {
-        let cartBurger: ICart[] = [];
-        cartBurger.push({Unit: unit, Burger: Burger})
-        setCart({
-            ...cart, // Obtenemos elementos con un spread operator
-           /*  cart: cartBurger, */
-        });
-        console.log(cart)
+       
+        let cartArray: ICart = {Unit: unit, BurgerItem: Burger}
+        const existItem: ICart[] = listCart.find((element: ICart) => element.BurgerItem.id === Burger.id);
+        (!existItem) && dispatch(addCartItem(cartArray));
     }
     return (
         <React.Fragment>
+            
             <BurgerAdd addUnit={addUnit} unit={unit} lessUnit={lessUnit}/>
             <Button
                 onClick={addCart}
