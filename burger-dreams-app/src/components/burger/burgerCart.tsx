@@ -4,7 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { deleteCartItem } from '../../redux/actions/cartActions';
 import {
     IconButton, Button, Box, DrawerCloseButton, Drawer, DrawerOverlay, DrawerFooter, DrawerContent, DrawerHeader, DrawerBody,
-    Stack, useDisclosure
+    Stack, useDisclosure, Text,
 } from '@chakra-ui/react';
 import { ICart } from "../../interfaces/cartInterface";
 import BurgerCartItem from './burgerCartItem';
@@ -42,6 +42,11 @@ const BurgerCart: React.FC<BurgerCartProps> = () => {
                     <DrawerCloseButton />
                     <DrawerBody>
                         <Stack spacing="24px">
+                            {listCart.length === 0 && 
+                            <Box>
+                                <Text>No hay hamburguesas en su carrito</Text>
+                                              
+                            </Box>}
                             {listCart.map((elemento: ICart) =>
                                 <div key={elemento.BurgerItem.id}>
                                     <Box>
