@@ -1,11 +1,11 @@
 
 import { ICart } from "../../interfaces/cartInterface";
-import { typesCart } from '../../constants/typesEnum';
+import { ECart } from '../../constants/emunCart';
 
 export const addCartItem = (listCart: ICart) => (dispatch: any) => {
     try {
         dispatch({ 
-            type: typesCart.ADD_CART, 
+            type: ECart.ADD_CART, 
             payload: listCart 
         });
 
@@ -17,7 +17,7 @@ export const addCartItem = (listCart: ICart) => (dispatch: any) => {
 export const deleteCartItem = (listCart: ICart) => (dispatch: any) => {
     try {
         dispatch({
-            type: typesCart.DELETE_CART,
+            type: ECart.DELETE_CART,
             payload: listCart
         })
     } catch (error) {

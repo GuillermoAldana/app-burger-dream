@@ -1,4 +1,4 @@
-import {typesCart} from '../../constants/typesEnum';
+import { ECart } from '../../constants/emunCart';
 
 const initialState = {
     error: null,
@@ -7,12 +7,12 @@ const initialState = {
 
 const CartReducer = (state = initialState, action: any) => {
     switch(action.type){
-        case typesCart.ADD_CART:
+        case ECart.ADD_CART:
             return{
                 ...state,
                 listCart: [...state.listCart, action.payload]
             }
-        case typesCart.DELETE_CART:
+        case ECart.DELETE_CART:
                 return{
                     ...state,
                     listCart: action.payload
