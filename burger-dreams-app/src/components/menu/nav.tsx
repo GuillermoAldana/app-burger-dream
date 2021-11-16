@@ -5,11 +5,12 @@ import NavUser from './navUser';
 import NavMobile from './navMobile';
 import { ILink } from '../../interfaces/linkInterface';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { useSelector } from 'react-redux';
 
 const Nav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const Links: Array<ILink> = [{ Title: 'Home', Enlace: '/' }, { Title: 'Burger', Enlace: '/BurgerList' }, { Title: 'Login', Enlace: '/Login' }];
-
+  const Links: Array<ILink> = [{ Title: 'Home', Enlace: '/' }, { Title: 'Burger', Enlace: '/BurgerList' }];
+  const { user } = useSelector((state: any) => state.UserReducer);
   return (
     <React.Fragment>
       <Box bg={useColorModeValue('#37393a', '#37393a')} color='white' px={4}>
@@ -44,7 +45,14 @@ const Nav = () => {
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
-            <NavUser />
+          {user.length !== 0 ? 
+            <NavUser /> :
+            <NavLink
+            key={'Login'}
+            Title={'Login'}
+            Enlace={'/Login'} />
+          }
+            
           </Flex>
         </Flex>
           {isOpen && (<NavMobile Links={Links} />)}

@@ -4,15 +4,14 @@ import 'firebase/auth';
 
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_FIREBASE_APPAPIKEY,
-  authDomain: process.env.REACT_FIREBASE_APPAUTHDOMAIN,
-  projectId: process.env.REACT_FIREBASE_APPPROJECTID,
-  storageBucket: process.env.REACT_FIREBASE_APPSTORAGEBUCKET,
-  messagingSenderId: process.env.REACT_FIREBASE_APPMESSAGINGSENDERID,
-  appId: process.env.REACT_FIREBASE_APPAPPID,
-  measurementId: process.env.REACT_FIREBASE_APPMEASUREMENTID
+  apiKey: "AIzaSyD6rQpVX1PEGdlgJiSqYDPuTExflO3StmE",
+  authDomain: "burgerdream-55719.firebaseapp.com",
+  projectId: "burgerdream-55719",
+  storageBucket: "burgerdream-55719.appspot.com",
+  messagingSenderId: "1072609990593",
+  appId: "1:1072609990593:web:e387af3a291339b8014140",
+  measurementId: "G-9YF9FRL9DM"
 };
-
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();

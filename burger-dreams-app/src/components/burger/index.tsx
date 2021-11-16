@@ -9,8 +9,6 @@ import BurgerCart from "./burgerCart";
 import BurgerBox from "./burgerBox";
 import BurgerPagination from './burgerPagination';
 
-
-
 interface BurgerProps {
 
 }
@@ -22,9 +20,10 @@ const Burger: React.FC<BurgerProps> = () => {
     const totalPages: number = Math.ceil(listBurger.length / 5);
     const itemsPerPage: number = 5;
     const [page, setPage] = React.useState(1);
-
+    
     useEffect(() => {
         dispatch(getAllItemsBurger());
+        
     }, []);
 
 

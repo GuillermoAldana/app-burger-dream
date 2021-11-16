@@ -8,12 +8,15 @@ import {
 } from '@chakra-ui/react';
 import { ICart } from "../../interfaces/cartInterface";
 import BurgerCartItem from './burgerCartItem';
+import useFirebaseDatabase from '../../hook/useFirebaseDatabase';
+
 interface BurgerCartProps {
 
 }
 
 const BurgerCart: React.FC<BurgerCartProps> = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const { save, documents } = useFirebaseDatabase("CartList");
     const dispatch = useDispatch();
     const { listCart } = useSelector((state: any) => state.cartReducer);
 
@@ -24,6 +27,10 @@ const BurgerCart: React.FC<BurgerCartProps> = () => {
         let listCartDelete = listCart.filter((element: ICart) => element.BurgerItem.id !== id);
         dispatch(deleteCartItem(listCartDelete));   
     }
+    const handleCart = () => {
+        save(listCart);
+    }
+
     return (
         <React.Fragment>
             <IconButton onClick={() => handleClick()}
@@ -66,7 +73,7 @@ const BurgerCart: React.FC<BurgerCartProps> = () => {
                         <Button variant="outline" mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme="blue">Finalizar compra</Button>
+                        <Button colorScheme="blue" onClick={handleCart}>Finalizar compra</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>

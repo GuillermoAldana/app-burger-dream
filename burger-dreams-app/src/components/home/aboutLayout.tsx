@@ -4,14 +4,22 @@ import Verduras from '../../resources/images/verduras.png'
 import Burger from '../../resources/images/burger.jpg';
 import Fritas from '../../resources/images/Fritas.png';
 import AboutIcon from './aboutIcon';
+import { useSelector } from 'react-redux';
+import { json } from 'stream/consumers';
 const AboutLayout :React.FC<any> = () =>
 {
+    const { user } = useSelector((state: any) => state.UserReducer);
     return(
         <React.Fragment>
             <Box mx='10' mt='50px' ml='5'>
             <Stack spacing={3}> 
                 <Heading as="h1" size="4xl">
                     Burger <Text as='span' color='#f36767'>Dreams</Text>
+                </Heading>
+                <Heading as="h1" size="4xl">
+                    {user.length !== 0 && (
+                        user.email
+                    )}
                 </Heading>
                 <Divider />
                 <Text fontSize="lg" mt='20px'>

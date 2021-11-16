@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { db } from '../../firebase/firebase-config';
+import { db } from '../firebase/firebase-config';
 
 const useFirebaseDatabase = (collection: string) => {
 

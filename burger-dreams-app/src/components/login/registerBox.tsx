@@ -1,14 +1,15 @@
 import React from 'react';
 import { Box, FormControl, FormLabel, Input, Center, Stack, Button, Text } from '@chakra-ui/react';
-import { FcGoogle } from 'react-icons/fc';
 import { Formik, Form, Field } from 'formik';
 import { RegisterData } from '../../types/typeRegister';
 import { validationRegister } from './validationYupBox';
-import { registerUser } from  '../../services/firebaseUserServices';
+import { useDispatch } from 'react-redux';
+import { setRegister } from '../../redux/actions/userActions';
+
 interface RegisterBoxProps {};
 
 const RegisterBox: React.FC<RegisterBoxProps> = () => {
-    
+    const dispatch = useDispatch();
     const registerDataInitial: RegisterData = {
         name: '',
         email: '',
@@ -21,7 +22,7 @@ const RegisterBox: React.FC<RegisterBoxProps> = () => {
                 validationSchema={validationRegister}
                 onSubmit={(values, actions) => {
                     actions.resetForm();
-                    registerUser(values);
+                    dispatch(setRegister(values))
                     alert(JSON.stringify(values, null, 2));
                     actions.setSubmitting(false);
                 }}>
@@ -64,11 +65,7 @@ const RegisterBox: React.FC<RegisterBoxProps> = () => {
                                     <Button type="submit" bg={'blue.400'} color={'white'} _hover={{ bg: 'blue.500'}}>
                                         Registrarse
                                     </Button>
-                                    <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />}>
-                                        <Center>
-                                            <Text>Registrarse con Google</Text>
-                                        </Center>
-                                    </Button>
+                                    
                                 </Stack>
                             </Stack>
                         </Box>

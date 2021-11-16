@@ -3,6 +3,7 @@ import userLogo from '../../resources/images/programmer.png';
 import { Avatar, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 
 const NavUser = () => {
+    
     return (
         <Menu>
             <MenuButton

@@ -10,3 +10,7 @@ export const validationRegister = Yup.object().shape({
       .min(6, 'El minimo de caracteres permitido es de 6.')
       .required('Este campo es requerido'),
   });
+  export const validationLogin = Yup.object().shape({
+    email: Yup.string().email('Email invalido').required('Este campo es requerido'),
+    password: Yup.string().required('Este campo es requerido'),
+  });
