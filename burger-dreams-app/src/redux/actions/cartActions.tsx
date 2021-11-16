@@ -1,7 +1,7 @@
 
 import { ICart } from "../../interfaces/cartInterface";
 import { ECart } from '../../constants/emunCart';
-
+export const clearCart = () => (dispatch: any) => dispatch({ type: ECart.DELETE_ALL_CART});
 export const addCartItem = (listCart: ICart) => (dispatch: any) => {
     try {
         dispatch({ 

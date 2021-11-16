@@ -2,7 +2,7 @@ import { EUser } from '../../constants/emunUser';
 
 const initialState = {
     error: null,
-    user: '',
+    user: [],
 };
 
 const UserReducer = (state = initialState, action: any) => {
@@ -15,7 +15,7 @@ const UserReducer = (state = initialState, action: any) => {
         case EUser.LOGOUT_USER:
             return {
             ...state,
-            user: '',
+            user: [],
             }     
         default:
             return state;

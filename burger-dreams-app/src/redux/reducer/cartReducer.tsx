@@ -10,19 +10,25 @@ const CartReducer = (state = initialState, action: any) => {
     switch(action.type){
         case ECart.ADD_CART:
             return{
-                ...state,
-                listCart: [...state.listCart, action.payload]
+                    ...state,
+                    listCart: [...state.listCart, action.payload]
             }
         case ECart.DELETE_CART:
-                return{
+            return{
                     ...state,
                     listCart: action.payload
                 }
         case ECart.PREVIEW_CART:
-                    return{
-                        ...state,
-                        previewCart: action.payload
-                    }              
+            return{
+                    ...state,
+                    previewCart: action.payload
+                }
+        case ECart.DELETE_ALL_CART:
+            return{
+                    ...state,
+                    listCart: []
+                     
+                }                          
         default:
             return state;
     }

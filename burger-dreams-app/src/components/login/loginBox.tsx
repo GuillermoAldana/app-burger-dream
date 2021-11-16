@@ -24,8 +24,9 @@ const LoginBox: React.FC<LoginBoxProps> = () => {
         dispatch(setLogin(values));
     }
     useEffect(()=>{
-        if(user !== '')
+        if(user.length !== 0)
         history.push("/")
+        
     }, [user])
 
     const registerDataInitial = {

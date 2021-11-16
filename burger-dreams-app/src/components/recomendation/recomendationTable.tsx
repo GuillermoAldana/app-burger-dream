@@ -1,6 +1,6 @@
 import { Table, TableCaption, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/table";
 import * as React from 'react';
-import { Stack } from '@chakra-ui/react';
+import { Spinner, Stack, Center } from '@chakra-ui/react';
 import useFirebaseDatabase from "../../hook/useFirebaseDatabase";
 
 interface RecomendationTableProps {
@@ -9,6 +9,13 @@ interface RecomendationTableProps {
 
 const RecomendationTable: React.FC<RecomendationTableProps> = () => {
     const { recomendationDocuments } = useFirebaseDatabase("CartList");
+
+    if(recomendationDocuments.length === 0) { 
+       return <Center mt={6}>
+            <Spinner/>
+        </Center>
+    }
+    
     return (
         <React.Fragment>
             <Stack spacing={8} mx={'auto'} maxW={'75%'} py={12} px={6}>

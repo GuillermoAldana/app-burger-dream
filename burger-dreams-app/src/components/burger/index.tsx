@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllItemsBurger } from '../../redux/actions/burgerActions';
-import { SimpleGrid, Center, Flex, Box, HStack, Text, Divider } from '@chakra-ui/react';
+import { SimpleGrid, Center, Flex, Box, HStack, Text, Divider, Spinner } from '@chakra-ui/react';
 import { Pagination } from 'react-stitches-paginator';
 import { IBurger } from '../../interfaces/burgerInterface';
 import BurgerCart from "./burgerCart";
@@ -20,10 +20,10 @@ const Burger: React.FC<BurgerProps> = () => {
     const totalPages: number = Math.ceil(listBurger.length / 5);
     const itemsPerPage: number = 5;
     const [page, setPage] = React.useState(1);
-    
+
     useEffect(() => {
         dispatch(getAllItemsBurger());
-        
+
     }, []);
 
 
@@ -43,9 +43,11 @@ const Burger: React.FC<BurgerProps> = () => {
             </Flex>
 
             <SimpleGrid columns={{ base: 1, md: 3, lg: 5 }} spacing={5} align="center" justify="center">
-
-                {setPaginate(listBurger).map((element: IBurger) =>
-                    <div key={element.id}>
+                {(listBurger.length === 0) && <Center mt={6}>
+                    <Spinner />
+                </Center>}
+                {setPaginate(listBurger).map((element: IBurger, index: number) =>
+                    <div key={index}>
                         <BurgerBox
                             Burger={element}
                             ImageBox={element.Image}

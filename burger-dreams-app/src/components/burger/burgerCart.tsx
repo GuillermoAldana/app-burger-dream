@@ -19,7 +19,7 @@ const BurgerCart: React.FC<BurgerCartProps> = () => {
     let history = useHistory();
     const dispatch = useDispatch();
     const { listCart } = useSelector((state: any) => state.cartReducer);
-
+    const { user } = useSelector((state: any) => state.UserReducer);
     const handleClick = () => {
         onOpen();
     }
@@ -28,11 +28,16 @@ const BurgerCart: React.FC<BurgerCartProps> = () => {
         dispatch(deleteCartItem(listCartDelete));
     }
     const handleCart = () => {
-        if(listCart.length !== 0 ) {
-            console.log(listCart);
+        if(listCart.length !== 0) {
+            
             dispatch(sendCart(listCart));
             onClose();
-            history.push("/finish");
+            if(user.length === 0 ) {
+                history.push("/login");
+            }else{
+                history.push("/finish");
+            }
+
         }
       
     }
@@ -60,8 +65,8 @@ const BurgerCart: React.FC<BurgerCartProps> = () => {
                                     <Text>No hay hamburguesas en su carrito</Text>
 
                                 </Box>}
-                            {listCart.map((elemento: ICart) =>
-                                <div key={elemento.BurgerItem.id}>
+                            {listCart.map((elemento: ICart, index:any) =>
+                                <div key={index}>
                                     <Box>
                                         <BurgerCartItem
                                             ImageBurger={elemento.BurgerItem.Image}
