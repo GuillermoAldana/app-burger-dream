@@ -26,7 +26,8 @@ const CartReducer = (state = initialState, action: any) => {
         case ECart.DELETE_ALL_CART:
             return{
                     ...state,
-                    listCart: []
+                    listCart: [],
+                    previewCart: ""
                      
                 }                          
         default:

@@ -3,9 +3,15 @@ import { useDispatch } from 'react-redux';
 import userLogo from '../../resources/images/programmer.png';
 import { Avatar, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { setLogout } from '../../redux/actions/userActions';
+import { useHistory } from 'react-router-dom';
 
 const NavUser = () => {
+    let history = useHistory();
     const dispatch = useDispatch();
+    const redirectLogout = () =>{
+        dispatch(setLogout())
+        history.push('/');
+    }
     return (
         <Menu>
             <MenuButton
@@ -22,7 +28,7 @@ const NavUser = () => {
                 />
             </MenuButton>
             <MenuList color={'#37393a'}>
-                <MenuItem onClick={() => { dispatch(setLogout()) }}>Cerrar sesion</MenuItem>
+                <MenuItem onClick={() => { redirectLogout() }}>Cerrar sesion</MenuItem>
             </MenuList>
         </Menu>
     );

@@ -11,7 +11,7 @@ const useFirebaseDatabase = (collection: string) => {
 
     const save = (values: any) => {
         return db.collection(collection).doc().set(values).then(() => {
-            alert("Guardado correctamente.")
+            
         }).catch(() =>{
             alert("Lo sentimos, hubo un error al guardar.")
         });

@@ -23,7 +23,7 @@ const Burger: React.FC<BurgerProps> = () => {
 
     useEffect(() => {
         dispatch(getAllItemsBurger());
-
+        
     }, []);
 
 
@@ -43,9 +43,7 @@ const Burger: React.FC<BurgerProps> = () => {
             </Flex>
 
             <SimpleGrid columns={{ base: 1, md: 3, lg: 5 }} spacing={5} align="center" justify="center">
-                {(listBurger.length === 0) && <Center mt={6}>
-                    <Spinner />
-                </Center>}
+                
                 {setPaginate(listBurger).map((element: IBurger, index: number) =>
                     <div key={index}>
                         <BurgerBox

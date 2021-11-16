@@ -26,7 +26,9 @@ export const setLoginGoogle = () => async (dispatch: any) => {
         });
 
     } catch (error) {
-        console.log(error);
+        dispatch({
+            type: EUser.ERROR_USER
+        })
     }
 
 }
@@ -44,7 +46,9 @@ export const setLogin = (value: UserAuth) => async (dispatch: any) => {
         });
 
     } catch (error) {
-        console.log(error);
+        dispatch({
+            type: EUser.ERROR_USER
+        })
     }
 
 }

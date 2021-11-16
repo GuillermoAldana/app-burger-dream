@@ -1,5 +1,5 @@
 import React from "react";
-import {  Box, FormControl, FormLabel, Input, Center, Stack, Button, Text } from '@chakra-ui/react';
+import { Box, FormControl, FormLabel, Input, Center, Stack, Button, Text, Heading } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin, setLoginGoogle } from "../../redux/actions/userActions";
@@ -10,23 +10,23 @@ import { validationLogin } from './validationYupBox';
 import { UserAuth } from '../../interfaces/userInterface';
 
 interface LoginBoxProps {
-    
+
 }
 
 const LoginBox: React.FC<LoginBoxProps> = () => {
     const dispatch = useDispatch();
     let history = useHistory();
-    const { user } = useSelector((state: any) => state.UserReducer);
-    const loginGoogle = () =>{
+    const { user, errorLogin } = useSelector((state: any) => state.UserReducer);
+    const loginGoogle = () => {
         dispatch(setLoginGoogle());
     }
-    const loginAccount = (values: UserAuth) =>{
+    const loginAccount = (values: UserAuth) => {
         dispatch(setLogin(values));
     }
-    useEffect(()=>{
-        if(user.length !== 0)
-        history.push("/")
-        
+    useEffect(() => {
+        if (user.length !== 0)
+            history.push("/")
+
     }, [user])
 
     const registerDataInitial = {
@@ -44,7 +44,7 @@ const LoginBox: React.FC<LoginBoxProps> = () => {
                     alert(JSON.stringify(values, null, 2));
                     actions.setSubmitting(false);
                 }}>
-                {({errors, touched }) => (
+                {({ errors, touched }) => (
                     <Form>
                         <Box
                             rounded={'lg'}
@@ -60,7 +60,7 @@ const LoginBox: React.FC<LoginBoxProps> = () => {
                                         </FormControl>
                                     )}
                                 </Field>
-                                {errors.email && touched.email ? ( <div style={{color:'red', fontSize:'12px'}}>{errors.email}</div>) : null}
+                                {errors.email && touched.email ? (<div style={{ color: 'red', fontSize: '12px' }}>{errors.email}</div>) : null}
                                 <Field name="password" >
                                     {({ field, form }: any) => (
                                         <FormControl id="password" isInvalid={form.errors.password && form.touched.password}>
@@ -69,16 +69,17 @@ const LoginBox: React.FC<LoginBoxProps> = () => {
                                         </FormControl>
                                     )}
                                 </Field>
-                                {errors.password && touched.password ? ( <div style={{color:'red', fontSize:'12px'}}>{errors.password}</div>) : null}
+                                {errors.password && touched.password ? (<div style={{ color: 'red', fontSize: '12px' }}>{errors.password}</div>) : null}
                                 <Stack spacing={10}>
-                                    <Button type="submit" bg={'blue.400'} color={'white'} _hover={{ bg: 'blue.500'}}>
+                                    {(errorLogin) && <Text fontSize={'md'}>Su usuario o contraseña no son correcta! Reintente</Text>}
+                                    <Button type="submit" bg={'blue.400'} color={'white'} _hover={{ bg: 'blue.500' }}>
                                         Iniciar sesion
                                     </Button>
-                                    <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />} onClick={()=>loginGoogle()}>
-                                    <Center>
-                                        <Text>Iniciar sesion con Google</Text>
-                                    </Center>
-                                </Button>
+                                    <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />} onClick={() => loginGoogle()}>
+                                        <Center>
+                                            <Text>Iniciar sesion con Google</Text>
+                                        </Center>
+                                    </Button>
                                 </Stack>
                             </Stack>
                         </Box>
@@ -86,7 +87,7 @@ const LoginBox: React.FC<LoginBoxProps> = () => {
                 )}
             </Formik>
         </React.Fragment>
-     );
+    );
 }
- 
+
 export default LoginBox;

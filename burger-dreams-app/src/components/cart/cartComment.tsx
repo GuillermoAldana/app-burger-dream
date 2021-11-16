@@ -7,6 +7,8 @@ import { useHistory } from 'react-router';
 import { json } from 'stream/consumers';
 import { clearCart } from '../../redux/actions/cartActions';
 import * as Yup from 'yup';
+import { Text } from '@chakra-ui/layout';
+import Recomendation from '../recomendation/index';
 interface CartCommmentProps {
     
 }
@@ -14,6 +16,7 @@ interface CartCommmentProps {
 const CartCommment: React.FC<CartCommmentProps> = () => {
     
     let history = useHistory();
+    const [message, setMessage] = React.useState(false);
     const { previewCart } = useSelector((state: any) => state.cartReducer);
     const { save } = useFirebaseDatabase("CartList");
     const { user } = useSelector((state: any) => state.UserReducer);
@@ -32,7 +35,10 @@ const CartCommment: React.FC<CartCommmentProps> = () => {
             Email: user.email,
             Burgers: previewCart
         }
+        setMessage(true)
         save(data);
+        
+        setTimeout(function(){ history.push("/"); setMessage(false); dispatch(clearCart()) }, 2000);
         
     }
     const backHome =()=>{
@@ -84,13 +90,14 @@ const CartCommment: React.FC<CartCommmentProps> = () => {
                                 </Field>
                                 {errors.comment && touched.comment ? ( <div style={{color:'red', fontSize:'12px'}}>{errors.comment}</div>) : null}
                                 <Stack spacing={10}>
+                                {message && <Text fontSize={'md'} fontWeight={'500'}>Muchas gracias por enviarnos tu recomendación</Text>}    
                                 {previewCart ?
                                     <Button type="submit" bg={'blue.400'} color={'white'} _hover={{ bg: 'blue.500'}}>
                                         Enviar
                                     </Button> :
-                                    <Button onClick={()=> backHome()} bg={'blue.400'} color={'white'} _hover={{ bg: 'blue.500'}}>
+                                <Button onClick={()=> backHome()} bg={'blue.400'} color={'white'} _hover={{ bg: 'blue.500'}}>
                                     Volver
-                                    </Button>
+                                </Button>
 
                                 }    
                                 </Stack>
