@@ -14,6 +14,24 @@ export const addCartItem = (listCart: ICart) => (dispatch: any) => {
     } 
 
 }
+
+export const sendCart = (listCart: ICart[])  => (dispatch: any) =>{
+    try {
+        let burgerListPreview: string[] = [];
+        let burgers: string = "";
+        listCart.map((element) => burgerListPreview.push(element.BurgerItem.Title));
+        burgerListPreview.map((element) => burgers += element + " | ")
+        
+        dispatch({
+            type: ECart.PREVIEW_CART,
+            payload: burgers
+        })
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const deleteCartItem = (listCart: ICart) => (dispatch: any) => {
     try {
         dispatch({

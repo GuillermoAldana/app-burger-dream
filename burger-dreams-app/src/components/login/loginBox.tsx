@@ -1,5 +1,5 @@
 import React from "react";
-import {  Box, FormControl, FormLabel, Input, Center, Stack, Button, Text, useColorModeValue } from '@chakra-ui/react';
+import {  Box, FormControl, FormLabel, Input, Center, Stack, Button, Text } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin, setLoginGoogle } from "../../redux/actions/userActions";
@@ -26,7 +26,6 @@ const LoginBox: React.FC<LoginBoxProps> = () => {
     useEffect(()=>{
         if(user !== '')
         history.push("/")
-        console.log(user);
     }, [user])
 
     const registerDataInitial = {

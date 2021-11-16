@@ -30,7 +30,7 @@ const useFirebaseDatabase = (collection: string) => {
     return {
         save,
         getAll,
-        documents: firebaseDocuments
+        recomendationDocuments: firebaseDocuments
     }
 
 }

@@ -1,8 +1,9 @@
 import { ECart } from '../../constants/emunCart';
 
 const initialState = {
-    error: null,
-    listCart: []
+    error: "",
+    listCart: [],
+    previewCart: "",
 };
 
 const CartReducer = (state = initialState, action: any) => {
@@ -16,7 +17,12 @@ const CartReducer = (state = initialState, action: any) => {
                 return{
                     ...state,
                     listCart: action.payload
-                }    
+                }
+        case ECart.PREVIEW_CART:
+                    return{
+                        ...state,
+                        previewCart: action.payload
+                    }              
         default:
             return state;
     }

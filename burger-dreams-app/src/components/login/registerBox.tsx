@@ -1,14 +1,16 @@
 import React from 'react';
-import { Box, FormControl, FormLabel, Input, Center, Stack, Button, Text } from '@chakra-ui/react';
+import { Box, FormControl, FormLabel, Input, Stack, Button } from '@chakra-ui/react';
 import { Formik, Form, Field } from 'formik';
 import { RegisterData } from '../../types/typeRegister';
 import { validationRegister } from './validationYupBox';
 import { useDispatch } from 'react-redux';
 import { setRegister } from '../../redux/actions/userActions';
 
-interface RegisterBoxProps {};
+interface RegisterBoxProps {
+    setActiveRegister: Function;
+};
 
-const RegisterBox: React.FC<RegisterBoxProps> = () => {
+const RegisterBox: React.FC<RegisterBoxProps> = ({setActiveRegister}) => {
     const dispatch = useDispatch();
     const registerDataInitial: RegisterData = {
         name: '',
@@ -23,7 +25,7 @@ const RegisterBox: React.FC<RegisterBoxProps> = () => {
                 onSubmit={(values, actions) => {
                     actions.resetForm();
                     dispatch(setRegister(values))
-                    alert(JSON.stringify(values, null, 2));
+                    setActiveRegister(false)
                     actions.setSubmitting(false);
                 }}>
                 {({errors, touched }) => (

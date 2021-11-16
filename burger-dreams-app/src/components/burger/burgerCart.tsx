@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { deleteCartItem } from '../../redux/actions/cartActions';
+import { deleteCartItem, sendCart } from '../../redux/actions/cartActions';
 import {
     IconButton, Button, Box, DrawerCloseButton, Drawer, DrawerOverlay, DrawerFooter, DrawerContent, DrawerHeader, DrawerBody,
     Stack, useDisclosure, Text,
 } from '@chakra-ui/react';
 import { ICart } from "../../interfaces/cartInterface";
 import BurgerCartItem from './burgerCartItem';
-import useFirebaseDatabase from '../../hook/useFirebaseDatabase';
+import { useHistory } from "react-router";
 
 interface BurgerCartProps {
 
@@ -16,7 +16,7 @@ interface BurgerCartProps {
 
 const BurgerCart: React.FC<BurgerCartProps> = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { save, documents } = useFirebaseDatabase("CartList");
+    let history = useHistory();
     const dispatch = useDispatch();
     const { listCart } = useSelector((state: any) => state.cartReducer);
 
@@ -25,10 +25,16 @@ const BurgerCart: React.FC<BurgerCartProps> = () => {
     }
     const handleDelete = (id: number) => {
         let listCartDelete = listCart.filter((element: ICart) => element.BurgerItem.id !== id);
-        dispatch(deleteCartItem(listCartDelete));   
+        dispatch(deleteCartItem(listCartDelete));
     }
     const handleCart = () => {
-        save(listCart);
+        if(listCart.length !== 0 ) {
+            console.log(listCart);
+            dispatch(sendCart(listCart));
+            onClose();
+            history.push("/finish");
+        }
+      
     }
 
     return (
@@ -49,11 +55,11 @@ const BurgerCart: React.FC<BurgerCartProps> = () => {
                     <DrawerCloseButton />
                     <DrawerBody>
                         <Stack spacing="24px">
-                            {listCart.length === 0 && 
-                            <Box>
-                                <Text>No hay hamburguesas en su carrito</Text>
-                                              
-                            </Box>}
+                            {listCart.length === 0 &&
+                                <Box>
+                                    <Text>No hay hamburguesas en su carrito</Text>
+
+                                </Box>}
                             {listCart.map((elemento: ICart) =>
                                 <div key={elemento.BurgerItem.id}>
                                     <Box>
@@ -73,7 +79,7 @@ const BurgerCart: React.FC<BurgerCartProps> = () => {
                         <Button variant="outline" mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme="blue" onClick={handleCart}>Finalizar compra</Button>
+                        <Button colorScheme="blue" onClick={() => handleCart()}> Finalizar compra</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>

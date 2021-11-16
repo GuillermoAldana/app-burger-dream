@@ -1,6 +1,4 @@
-
 import { EUser } from '../../constants/emunUser';
-import { IUser } from '../../interfaces/userInterface';
 
 const initialState = {
     error: null,
@@ -10,10 +8,15 @@ const initialState = {
 const UserReducer = (state = initialState, action: any) => {
     switch(action.type){
         case EUser.ADD_USER:
-            return{
+            return {
                 ...state,
                 user: action.payload
-            } 
+            }
+        case EUser.LOGOUT_USER:
+            return {
+            ...state,
+            user: '',
+            }     
         default:
             return state;
     }

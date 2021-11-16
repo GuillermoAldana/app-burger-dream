@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 
 const Nav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const Links: Array<ILink> = [{ Title: 'Home', Enlace: '/' }, { Title: 'Burger', Enlace: '/BurgerList' }];
+  const Links: Array<ILink> = [{ Title: 'Home', Enlace: '/' }, { Title: 'Burger', Enlace: '/BurgerList' }, { Title: 'Recomendation', Enlace: '/Recomendation' }];
   const { user } = useSelector((state: any) => state.UserReducer);
   return (
     <React.Fragment>
